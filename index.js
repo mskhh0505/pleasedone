@@ -14,6 +14,8 @@ const client = new Discord.Client();
 const roblox = require('noblox.js');
 const chalk = require('chalk');
 const figlet = require('figlet');
+const groupId = 4483539;
+const prefix = ";";
 require('dotenv').config();
 const fs = require('fs');
 
@@ -30,11 +32,11 @@ async function onShout(){
   let shoutchannel = await client.channels.cache.get(process.env.shoutchannelid);
   if(firstshout == true){
     firstshout = false;
-    shout = await roblox.getShout(Number(process.env.groupId));
+    shout = await roblox.getShout(Number(groupId));
     setTimeout(onShout, 30000);
   } else {
     setTimeout(onShout, 30000);
-    let currentshout = await roblox.getShout(Number(process.env.groupId));
+    let currentshout = await roblox.getShout(Number(groupId));
     if(currentshout.body == shout.body) return;
     if(currentshout.body){
       shoutchannel.send({embed: {
@@ -77,7 +79,7 @@ fs.readdir('./commands/', async (err, files) => {
 });
 
 client.on('ready', async () => {
-  console.log(chalk.yellow(figlet.textSync('7th sab bot', { horizontalLayout: 'full' })));
+  console.log(chalk.yellow(figlet.textSync('qbot', { horizontalLayout: 'full' })));
   console.log(chalk.red(`Bot started!\n---\n`
   + `> Users: ${client.users.cache.size}\n`
   + `> Channels: ${client.channels.cache.size}\n`
@@ -99,8 +101,8 @@ client.on('ready', async () => {
 
 client.on('message', async (message) => {
     if(message.author.bot) return;
-    if(!message.content.startsWith(process.env.prefix)) return;
-    const args = message.content.slice(process.env.prefix.length).split(' ');
+    if(!message.content.startsWith(prefix)) return;
+    const args = message.content.slice(prefix.length).split(' ');
     const commandName = args[0].toLowerCase();
     args.shift();
     const command = commandlist.findIndex((cmd) => cmd.name === commandName);
