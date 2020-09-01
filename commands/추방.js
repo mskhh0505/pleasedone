@@ -8,7 +8,7 @@ async function getRankID(func_group, func_user){
 }
 
 exports.run = async (client, message, args) => {
-    if(!message.member.roles.cache.some(role =>["Exile Permissions"].includes(role.name))){
+    if(!message.member.roles.cache.some(role =>["Bot access"].includes(role.name))){
         return message.channel.send({embed: {
             color: 16733013,
             description: "You need the `Exile Permissions` role to run this command.",
