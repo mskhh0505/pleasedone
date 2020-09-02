@@ -2,7 +2,7 @@ const roblox = require('noblox.js');
 const chalk = require('chalk');
 require('dotenv').config();
 const groupId = 4483539;
-const maximumRank = 1;
+const maximumRank = 9;
 
 async function getRankID(func_group, func_user){
     let role = await roblox.getRankInGroup(func_group, func_user);
