@@ -1,6 +1,8 @@
 const roblox = require('noblox.js');
 const chalk = require('chalk');
 require('dotenv').config();
+const groupId = 4483539;
+const maximumRank = 1;
 
 async function getRankID(func_group, func_user){
     let role = await roblox.getRankInGroup(func_group, func_user);
@@ -42,8 +44,8 @@ exports.run = async (client, message, args) => {
             }
         }});
     }
-    let rankInGroup = await getRankID(Number(process.env.groupId), id);
-    if(process.env.maximumRank <= rankInGroup){
+    let rankInGroup = await getRankID(Number(groupId), id);
+    if(maximumRank <= rankInGroup){
         return message.channel.send({embed: {
             color: 16733013,
             description: "This user cannot be exiled by this bot.",
@@ -55,7 +57,7 @@ exports.run = async (client, message, args) => {
     }
     let exileResponse;
     try {
-        exileResponse = await roblox.exile(Number(process.env.groupId), id);
+        exileResponse = await roblox.exile(Number(groupId), id);
     } catch (err) {
         console.log(chalk.red('An error occured when running the exile command: ' + err));
         return message.channel.send({embed: {
