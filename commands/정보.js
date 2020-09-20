@@ -1,4 +1,4 @@
-// Command made by TypicallyShadow
+// 이 모든 봇은 E_Seohyun = _서현#4821 에게 있습니다.
 // Any suggestions? Feel free to contact me.
 // Feel free to change any of the footers but do not claim that you made this command as it can be completely rude.
 const roblox = require("noblox.js");
