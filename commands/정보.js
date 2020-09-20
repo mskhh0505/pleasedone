@@ -4,7 +4,7 @@
 const roblox = require("noblox.js");
 require('dotenv').config();
 const prefix = ";";
-const groupId = 3828960;
+const groupId = 5742467;
 
 exports.run = async (client, message, args) => {
 
